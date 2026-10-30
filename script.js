@@ -101,11 +101,11 @@ function valida(){
   return true;
 }
 // ===== CONFIGURAÇÃO DO PIX =====
-const PIX_CHAVE = 'f6eb027b-4f23-4192-a24e-8ad8b8a70117';          // chave Pix (e-mail, celular com +55, CPF/CNPJ ou chave aleatória)
-const PIX_NOME = 'JHONATAN F G OLIVEIRA';  // nome de quem recebe (até 25 letras, sem acento)
-const PIX_CIDADE = 'IPATINGA'; // cidade (até 15 letras, sem acento)
-const WHATS = '';              // WhatsApp do grupo para endereço de entrega, ex.: '5531999999999'
-const API_URL = '';            // URL do Apps Script (termina em /exec) — veja o passo a passo
+const PIX_CHAVE = 'f6eb027b-4f23-4192-a24e-8ad8b8a70117';          
+const PIX_NOME = 'JHONATAN F G OLIVEIRA';  
+const PIX_CIDADE = 'IPATINGA'; 
+const WHATS = '';              
+const API_URL = '';            
 // ================================
 const semAcento = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
 const tlv = (id, v) => id + String(v.length).padStart(2, '0') + v;
@@ -346,7 +346,7 @@ if (!reduce) {
     const abrir = location.hash === '#equipe';
     g('equipe').hidden = !abrir; document.body.style.overflow = abrir ? 'hidden' : '';
     if (abrir) {
-      if (!API_URL) { if (!g('aPainel').hidden) return; const sv = ss.get(); if (sv) entrarNuvem(sv); else setTimeout(() => g('aSenha').focus(), 50); return; }
+      if (!API_URL) { if (!g('aPainel').hidden) return; const sv = ss.get(); if (sv === 'felicita2026') entrarNuvem(sv); else setTimeout(() => g('aSenha').focus(), 50); return; }
       const sv = ss.get(); if (sv && g('aPainel').hidden) entrar(sv); else if (g('aPainel').hidden) setTimeout(() => g('aSenha').focus(), 50);
     }
     else clearInterval(timer);
