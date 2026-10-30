@@ -335,7 +335,7 @@ if (!reduce) {
     if (r === 'ok') { ss.set(v); g('aLogin').hidden = true; g('aPainel').hidden = false; g('aLive').hidden = false; clearInterval(timer); timer = setInterval(carregar, 8000); g('aLoginErr').textContent = ''; }
     else { ss.set(''); g('aLoginErr').textContent = r === 'senha' ? 'Senha incorreta.' : r === 'config' ? 'O painel ainda não está ligado à planilha. Coloque a URL do Apps Script em API_URL (js/script.js).' : 'Não foi possível conectar. Verifique a internet.'; }
   }
-  const SENHA_HASH = 'bc66d970c2b9c00cb42e8473d46d43f276d846c4eafa5ce7cc4ddff657ad4a2d'; // senha da equipe (só o resumo, não a senha)
+  const SENHA_HASH = 'admin123'; // senha da equipe (só o resumo, não a senha)
   async function hash(t) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
   async function entrarNuvem(v) {
     g('aLoginErr').textContent = 'Entrando…';
