@@ -2,218 +2,144 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Brownie da Felicidade – Felicitta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felicitta – Brownie da Felicidade</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 </head>
 <body>
-
-  <header class="hero">
-    <div class="drip" aria-hidden="true"></div>
-    <div class="hero-content">
-      <p class="tag">Feira Cultural · Turma 204</p>
+  <main>
+    <section class="hero">
+      <div class="drip"></div>
       <h1>Felicitta</h1>
       <p class="script">Brownie da Felicidade</p>
-      <p class="lead">Copo de 300 ml super recheado. Escolha a fruta, o recheio e adicione camadas extras do jeito que você mais gosta!</p>
-      <div class="facts">
-        <span class="fact">Entrega ou retirada</span>
-        <span class="fact">Pix rápido</span>
+      <p class="lead">Monte o seu copo com camadas deliciosas!</p>
+      <div class="hero-pic" id="cupImg">
+        <img src="morango-chocolate.png" alt="Morango e Chocolate" data-k="morango-chocolate">
+        <img src="morango-ninho.png" alt="Morango e Ninho" data-k="morango-ninho">
+        <img src="uva-chocolate.png" alt="Uva e Chocolate" data-k="uva-chocolate">
+        <img src="uva-ninho.png" alt="Uva e Ninho" data-k="uva-ninho">
+        <img src="sem-chocolate.png" alt="Sem fruta e Chocolate" data-k="sem-chocolate">
+        <img src="sem-ninho.png" alt="Sem fruta e Ninho" data-k="sem-ninho">
       </div>
-    </div>
-    <div class="hero-pic">
-      <div class="disc" aria-hidden="true"></div>
-      <img src="brownie.png" alt="Copo do Brownie da Felicidade recheado" width="340" height="420">
-      <div class="price" aria-label="Preço base: dez reais">
-        <small>a partir de</small>
-        <strong>R$ 10</strong>
-        <span>300 ml</span>
+      <div class="price">R$ 10</div>
+    </section>
+
+    <div class="builder">
+      <div class="panel">
+        <h2>Escolha a Fruta</h2>
+        <div id="frutas" class="chips"></div>
       </div>
-    </div>
-  </header>
 
-  <main class="builder">
-    <div class="col-left">
-      <section class="panel reveal">
-        <h2>1. Escolha a fruta</h2>
-        <div id="frutas"></div>
-      </section>
+      <div class="panel">
+        <h2>Escolha o Recheio</h2>
+        <div id="recheios" class="chips"></div>
+      </div>
 
-      <section class="panel reveal">
-        <h2>2. Escolha o recheio</h2>
-        <div id="recheios"></div>
-      </section>
-
-      <section class="panel reveal">
-        <h2>3. Quer reforçar alguma camada?</h2>
-        <p class="sub">O copo padrão já vem com 1 camada de cada ingrediente. Adicione camadas extras se quiser (+ R$ 2 cada):</p>
+      <div class="panel">
+        <h2>Camadas Extras</h2>
         <div id="extras"></div>
-        <label class="check-mousse">
-          <input type="checkbox" id="semMousse">
-          <span>Quero <strong>SEM mousse de maracujá</strong></span>
+        <label class="checkbox-label">
+          <input type="checkbox" id="semMousse"> Sem mousse de maracujá
         </label>
-      </section>
-    </div>
+      </div>
 
-    <div class="col-right">
-      <section class="panel preview-panel reveal">
-        <h2>Seu copo personalizado</h2>
-        <div class="cup-wrap">
-          <div id="cupImg" class="cup-img" aria-label="Foto do copo">
-            <img src="morango-chocolate.png" alt="Morango com brigadeiro de chocolate" class="on" data-k="morango-chocolate">
-            <img src="morango-ninho.png" alt="Morango com brigadeiro de Ninho" data-k="morango-ninho">
-            <img src="uva-chocolate.png" alt="Uva com brigadeiro de chocolate" data-k="uva-chocolate">
-            <img src="uva-ninho.png" alt="Uva com brigadeiro de Ninho" data-k="uva-ninho">
-            <img src="sem-chocolate.png" alt="Sem fruta com brigadeiro de chocolate" data-k="sem-chocolate">
-            <img src="sem-ninho.png" alt="Sem fruta com brigadeiro de Ninho" data-k="sem-ninho">
-          </div>
-          <div id="badges" class="badges"></div>
+      <div class="panel">
+        <h2>Quantidade e Entrega</h2>
+        <div class="qty-control">
+          <button type="button" id="qMinus">−</button>
+          <input type="number" id="qty" value="1" min="1" max="20" readonly>
+          <button type="button" id="qPlus">+</button>
         </div>
 
-        <ul id="baseList" class="base-list"></ul>
-
-        <div class="qty-row">
-          <span class="lbl">Quantidade:</span>
-          <div class="stepper">
-            <button type="button" id="qMinus" aria-label="Diminuir quantidade">−</button>
-            <input type="text" id="qty" value="1" readonly aria-label="Quantidade de copos">
-            <button type="button" id="qPlus" aria-label="Aumentar quantidade">+</button>
-          </div>
+        <div class="delivery-options">
+          <label><input type="radio" name="receber" value="Retirar na feira" checked> Retirar na feira</label>
+          <label><input type="radio" name="receber" value="Entrega"> Entrega</label>
         </div>
 
-        <div class="receber-box">
-          <span class="lbl">Como prefere receber?</span>
-          <div class="radios">
-            <label><input type="radio" name="receber" value="Retirar na feira" checked> <span>Retirar na feira</span></label>
-            <label><input type="radio" name="receber" value="Entrega"> <span>Entrega</span></label>
-          </div>
-          <div id="endBox" class="end-box" hidden>
-            <input type="text" id="end" placeholder="Seu endereço completo + ponto de referência">
-            <small>A taxa de entrega é paga diretamente ao entregador.</small>
-          </div>
+        <div id="endBox" hidden>
+          <input type="text" id="end" placeholder="Endereço completo para entrega">
         </div>
 
-        <div class="campo-nome">
-          <label for="nome">Seu nome <small>(obrigatório)</small></label>
-          <input type="text" id="nome" placeholder="Digite seu nome para o pedido" autocomplete="name">
-        </div>
+        <input type="text" id="nome" placeholder="Seu nome completo">
+        <textarea id="obs" placeholder="Observações (opcional)"></textarea>
 
-        <div class="campo-obs">
-          <label for="obs">Observação <small>(opcional)</small></label>
-          <input type="text" id="obs" placeholder="Ex.: pouca calda, sem talher, etc.">
+        <div class="total-box">
+          <span>Total:</span> <strong id="total">R$ 10,00</strong>
         </div>
+        <p id="totalNote" class="note"></p>
 
-        <div class="total-row">
-          <span>Total do pedido:</span>
-          <strong id="total">R$ 10,00</strong>
+        <div class="actions">
+          <button type="button" id="zap" class="main-btn">Fazer Pedido / Pagar com Pix</button>
+          <button type="button" id="copy" class="secondary-btn">Copiar Resumo</button>
         </div>
-        <p id="totalNote" class="total-note"></p>
-
-        <div class="btns">
-          <button type="button" id="zap" class="btn-zap">Pedir agora / Pagar com Pix</button>
-          <button type="button" id="copy" class="btn-copy">Copiar pedido em texto</button>
-        </div>
-
-        <p id="err" class="msg err" role="alert"></p>
-        <p id="ok" class="msg ok" role="status"></p>
-      </section>
+        <p id="err" class="error"></p>
+        <p id="ok" class="success"></p>
+      </div>
     </div>
   </main>
 
-  <footer class="footer">
-    <p><strong>Felicitta Brownies</strong> · Feira Cultural 2024</p>
-    <p><a href="#equipe">Área da equipe</a></p>
-  </footer>
+  <div style="text-align:center; padding: 20px;">
+    <a href="#equipe" style="color: #fff; text-decoration: underline; font-size: 14px;">Área da equipe</a>
+  </div>
+
+  <div id="done" class="done-overlay" hidden>
+    <div class="done-card">
+      <div id="payStep">
+        <h2>Pagamento via Pix</h2>
+        <p>Total a pagar: <strong id="payTotal"></strong></p>
+        <div id="qr"></div>
+        <p id="payMsg" class="note"></p>
+        <button type="button" id="copyPix" class="secondary-btn">Copiar código Pix</button>
+        <button type="button" id="pago" class="main-btn">Já fiz o Pix</button>
+        <button type="button" id="zapEnd" class="secondary-btn" hidden>Enviar endereço no WhatsApp</button>
+        <button type="button" id="voltar" class="text-btn">Voltar</button>
+      </div>
+      <div id="okStep" hidden>
+        <h2>Pedido Registrado!</h2>
+        <img id="okImg" src="" alt="Copo escolhido">
+        <p id="okTxt"></p>
+        <button type="button" id="novo" class="main-btn">Fazer novo pedido</button>
+      </div>
+    </div>
+  </div>
 
   <div id="mbar" class="mbar">
-    <div class="mbar-tot">
-      <strong id="mTotal">R$ 10,00</strong>
-      <span id="mNote">1 copo</span>
+    <div>
+      <span id="mTotal">R$ 10,00</span>
+      <small id="mNote">1 copo</small>
     </div>
-    <a href="#zap" class="mbar-btn">Pedir agora</a>
+    <a href="#zap">Pedir agora</a>
   </div>
 
-  <div id="done" class="modal-bg" hidden>
-    <div class="modal">
-      <div id="payStep">
-        <div class="modal-hdr">
-          <h2>Pagamento via Pix</h2>
-          <p>Escaneie o QR Code no app do seu banco ou copie o código Pix abaixo.</p>
-        </div>
-        <div class="pay-body">
-          <div class="pay-val">
-            <span>Valor a pagar</span>
-            <strong id="payTotal">R$ 10,00</strong>
-          </div>
-          <div id="qr" class="qr-box"></div>
-          <button type="button" id="copyPix" class="btn-copy-pix">Copiar código Pix</button>
-          <div id="wait" class="wait-box" hidden>
-            <span class="spinner"></span>
-            <span>Aguardando confirmação do banco…</span>
-          </div>
-          <p id="payMsg" class="pay-msg"></p>
-          <div class="pay-actions">
-            <button type="button" id="pago" class="btn-pago">Já fiz o pagamento</button>
-            <button type="button" id="zapEnd" class="btn-zap-end" hidden>Enviar endereço no WhatsApp</button>
-            <button type="button" id="voltar" class="btn-voltar">Voltar / alterar pedido</button>
-          </div>
-        </div>
+  <div id="equipe" class="equipe-overlay" hidden>
+    <div class="equipe-container">
+      <div class="equipe-header">
+        <span>Felicitta <strong>Área da equipe</strong></span>
+        <a href="#" class="close-btn">&times;</a>
       </div>
 
-      <div id="okStep" hidden>
-        <div class="modal-hdr">
-          <h2>Pedido confirmado!</h2>
+      <div id="aPainel" class="equipe-panel">
+        <div class="equipe-stats">
+          <div><span id="aPed">0</span><small>pedidos</small></div>
+          <div><span id="aCopos">0</span><small>copos</small></div>
+          <div><span id="aTotal">R$ 0,00</span><small>total</small></div>
+          <div><span id="aPend">0</span><small>pendentes</small></div>
         </div>
-        <div class="ok-body">
-          <img id="okImg" src="morango-chocolate.png" alt="Copo do pedido">
-          <p id="okTxt">Obrigado! Seu pedido já está sendo preparado.</p>
-          <button type="button" id="novo" class="btn-pago">Fazer outro pedido</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="equipe" class="modal-bg eq-bg" hidden>
-    <div class="modal eq-modal">
-      <div class="eq-hdr">
-        <h2>Área da Equipe</h2>
-        <a href="#" class="eq-fechar" aria-label="Fechar">&times;</a>
-      </div>
-
-      <form id="aLogin" class="eq-login" hidden>
-        <h2>Entrar no painel</h2>
-        <input type="password" id="aSenha" value="123">
-        <button type="submit" class="btn-pago">Entrar</button>
-        <p id="aLoginErr" class="msg err"></p>
-      </form>
-
-      <div id="aPainel" class="eq-painel">
-        <div class="eq-stats">
-          <div class="st-box"><span>Pedidos</span><strong id="aPed">0</strong></div>
-          <div class="st-box"><span>Copos</span><strong id="aCopos">0</strong></div>
-          <div class="st-box"><span>Faturamento</span><strong id="aTotal">R$ 0</strong></div>
-          <div class="st-box"><span>Pendentes</span><strong id="aPend">0</strong></div>
-        </div>
-
-        <div class="eq-bar">
+        <div class="equipe-bar">
           <div class="eq-f">
             <button type="button" data-f="abertos" class="on">Abertos</button>
             <button type="button" data-f="todos">Todos</button>
-            <button type="button" data-f="Aguardando Pix">Pix</button>
-            <button type="button" data-f="Pago">Pagos</button>
-            <button type="button" data-f="Pronto">Prontos</button>
           </div>
-          <div id="aLive" class="eq-live off"><span class="dot"></span><span id="aLiveTxt">painel ativo</span></div>
+          <div id="aLive" class="eq-live off"><span class="dot"></span><span id="aLiveTxt">modo local</span></div>
         </div>
-
-        <p id="aErr" class="msg err"></p>
-        <div id="aVazio" class="eq-vazio" hidden>Nenhum pedido por enquanto.</div>
-        <div id="aLista" class="eq-lista"></div>
-        <button type="button" id="aSair" class="btn-voltar" style="margin-top:20px;">Sair do painel</button>
+        <p id="aErr" class="error"></p>
+        <div id="aVazio" class="equipe-vazio">Nenhum pedido registrado ainda.</div>
+        <div id="aLista" class="equipe-lista"></div>
       </div>
     </div>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
